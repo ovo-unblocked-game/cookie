@@ -1,34 +1,39 @@
-# Minecraft Classic
-Old minecraft on the web.
+# cookieclicker
 
-Game version: `0.0.23a_01`
+<img src="img/perfectCookie.png" width="128">
 
-You can play the original version [here](https://classic.minecraft.net).<br>
-*I am making this because the original version is blocked at my school and may other people requested this.*
+The original game can be found at http://orteil.dashnet.org/cookieclicker/
 
-### Badges
-<p>
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/3kh0/minecraft-classic?color=red&label=Lastest%20commit&logo=github">
-<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/3kh0/minecraft-classic?color=purple&label=Contributors&logo=github">
-<img alt="GitHub forks" src="https://img.shields.io/github/forks/3kh0/minecraft-classic?label=Forks&logo=github">
-<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/3kh0/minecraft-classic?color=yellow&label=Stars&logo=github">
-<img alt="GitHub" src="https://img.shields.io/github/license/3kh0/minecraft-classic?label=License&logo=github">
-<img alt="GitHub issues" src="https://img.shields.io/github/issues/3kh0/minecraft-classic?label=Issues&logo=github">
-<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/3kh0/minecraft-classic?color=yellow&label=Pull%20Requests&logo=github">
-  </p>
-  
-## Play
+This mirror for, errrr, like, educational purpose, either to download for your own offline education or to be played online from http://ozh.github.io/cookieclicker/ if you cannot "educate" yourself on the original URL
 
-Click the link below to start the game:
-[https://3kh0.github.io/minecraft-classic](https://3kh0.github.io/minecraft-classic)
+### How to update
 
-## Support
+If the original game updates, here is how you can update the mirror:
 
-This game should work on all modern browsers. If not the game will show a error and how to fix it.
+#### 1. Fetch all new images :
 
-## Dev
+from the `/img/` directory :
 
-You can clone this repo on the command line:
-```
-gh repo clone 3kh0/minecraft-classic
-```
+* `wget --convert-links -O index.html http://orteil.dashnet.org/cookieclicker/img/`
+* `grep -v PARENTDIR index.html | grep -o '/img/*[a-zA-ZA-z]*.*"' | sed 's/\/img\///' | sed 's/"//' >list.txt`
+* `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/img/`
+
+#### 2. Fetch all new sounds :
+
+Similarly, from the `/snd/` directory :
+
+* `wget --convert-links -O index.html http://orteil.dashnet.org/cookieclicker/snd/`
+* `grep -v PARENTDIR index.html | grep -o '/snd/*[a-zA-ZA-z]*.*"' | sed 's/\/snd\///' | sed 's/"//' >list.txt`
+* `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/snd/`
+
+#### 3. Update `js` and `html` files :
+
+From the root directory :
+
+* Fetch updated `js` files : `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/`
+* Fetch the updated `index.html` file
+* Scan `index.html` for any new `<script src` and also `main.js` for any new local javascript (eg `Game.last.minigameUrl`)
+
+#### 4. Report update here :)
+
+If you happen to update, please make a pull request for others to benefit, thanks!
